@@ -53,7 +53,7 @@ const Guest = () => {
               )
           );
   
-          const response = await axios.get(`/api/search?${queryParams.toString()}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/search?${queryParams.toString()}`);
   
           if (response.data && Array.isArray(response.data)) {
               setSearchResults(response.data);
@@ -133,7 +133,7 @@ const fetchLists = async () => {
     setListsLoading(true);
     setListsError('');
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/lists');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/lists`);
       console.log('Fetched lists:', response.data);
       // Adjust this line to match the actual structure of the API response
       setLists(response.data.listsL || []); // Correct the key if needed
@@ -279,7 +279,7 @@ useEffect(() => {
         if (!showCountries) {
             try {
                 setLoading(true);
-                const response = await axios.get('${process.env.REACT_APP_API_URL}/countries');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/countries`);
                 setCountries(response.data);
                 setError('');
             } catch (err) {
@@ -305,7 +305,7 @@ useEffect(() => {
         setDestinationByIdError(''); // Clear previous errors
       
         try {
-          const response = await axios.get(`/api/destinations/${destinationId.trim()}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/destinations/${destinationId.trim()}`);
           setDestinationById(response.data);
           setMapVisible(true); // Show map for valid destination
         } catch (err) {

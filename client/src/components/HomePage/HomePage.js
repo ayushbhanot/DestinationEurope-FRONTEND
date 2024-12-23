@@ -59,7 +59,7 @@ const [newDestinations, setNewDestinations] = useState([]); // Selected destinat
               )
           );
   
-          const response = await axios.get(`/api/search?${queryParams.toString()}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/search?${queryParams.toString()}`);
   
           if (response.data && Array.isArray(response.data)) {
               setSearchResults(response.data);
@@ -211,7 +211,7 @@ const combinedLists = [
           const token = localStorage.getItem('token');
           console.log("Fetching user-specific lists with token:", token);
       
-          const response = await axios.get('${process.env.REACT_APP_API_URL}/lists/mine', {
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/lists/mine`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           console.log("Fetched user-specific lists response:", response.data);
@@ -240,7 +240,7 @@ const fetchUserLists = async (page = 1) => {
     setLoading(true);
     setError('');
     try {
-        const response = await axios.get(`/api/lists/home`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/lists/home`, {
             params: { page, limit: listsPerPage },
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
@@ -389,7 +389,7 @@ useEffect(() => {
         if (!showCountries) {
             try {
                 setLoading(true);
-                const response = await axios.get('${process.env.REACT_APP_API_URL}/countries');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/countries`);
                 setCountries(response.data);
                 setError('');
             } catch (err) {
@@ -415,7 +415,7 @@ useEffect(() => {
         setDestinationByIdError(''); // Clear previous errors
       
         try {
-          const response = await axios.get(`/api/destinations/${destinationId.trim()}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/destinations/${destinationId.trim()}`);
           setDestinationById(response.data);
           setMapVisible(true); // Show map for valid destination
         } catch (err) {
@@ -464,7 +464,7 @@ const currentLists = combinedLists.slice(indexOfFirstList, indexOfLastList);
     
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`/api/lists/${listId}`, {
+            await axios.delete(`${process.env.REACT_APP_API_URL}/lists/${listId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUserSpecificLists((prevLists) =>
@@ -490,7 +490,7 @@ const handleAddDestination = async () => {
     }
 
     try {
-        const response = await axios.get(`/api/destinations/${newDestination}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/destinations/${newDestination}`);
         if (response.status === 200) {
             setNewDestinations([...newDestinations, newDestination.trim()]);
             setNewDestination(""); // Clear input
@@ -526,7 +526,7 @@ const handleSaveEditedList = async () => {
 
     try {
         const token = localStorage.getItem("token");
-        const response = await axios.put(`/api/lists/${listBeingEdited._id}`, updatedList, {
+        const response = await axios.put(`${process.env.REACT_APP_API_URL}/lists/${listBeingEdited._id}`, updatedList, {
             headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -554,7 +554,7 @@ const searchDestinations = async (query) => {
     }
 
     try {
-        const response = await axios.get('${process.env.REACT_APP_API_URL}/destinations', {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/destinations`, {
             params: { name: query }, // Replace 'name' with the query parameter key used in the backend
         });
         setDestinationSuggestions(response.data); // Update suggestions
@@ -575,7 +575,7 @@ const handleSearchDestination = async (e) => {
     }
 
     try {
-        const response = await axios.get('${process.env.REACT_APP_API_URL}/destinations', { params: { name: query } });
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/destinations`, { params: { name: query } });
         const suggestions = response.data.filter((dest) => dest && dest.ID && dest.Destination); // Ensure valid suggestions
 
         setDestinationSuggestions(suggestions);
@@ -614,7 +614,7 @@ const handleCreateNewList = async () => {
     console.log("Payload to be sent:", payload);
 
     try {
-        const response = await axios.post('${process.env.REACT_APP_API_URL}/lists', payload, {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/lists`, payload, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
 
@@ -652,7 +652,7 @@ const handleSubmitReview = async () => {
     }
 
     try {
-        const response = await axios.post(`/api/lists/${currentListId}/reviews`, {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/lists/${currentListId}/reviews`, {
             rating: newReview.rating,
             comment: newReview.comment.trim(),
         }, {
@@ -678,7 +678,7 @@ const handleAddDestinationById = async () => {
     }
 
     try {
-        const response = await axios.get(`/api/destinations/${newDestination.trim()}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/destinations/${newDestination.trim()}`);
         const destination = normalizeDestinationKeys(response.data);
 
         if (!destination || !destination.Destination || !destination.ID) {
@@ -712,7 +712,7 @@ const fetchDestinationDetails = async (id) => {
     try {
         // Check if the ID is valid and has not already been fetched
         if (!destinationDetails[id]) {
-            const response = await axios.get(`/api/destinations/${id}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/destinations/${id}`);
             const destination = response.data;
 
             // Update state with fetched details
