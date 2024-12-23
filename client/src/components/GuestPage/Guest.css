@@ -1,0 +1,1068 @@
+html {
+    font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+.map-container {
+    margin-top: 20px;
+  }
+  
+  #map {
+    height: 300px; 
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .map-title {
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 275px;
+    margin-bottom: 0px;
+  }
+  
+  .dropdown-button {
+    width: 100%;
+    padding: 10px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: 0%;
+  }
+
+.additional-functions-container {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+  .dropdown-button:hover {
+    background: #45a049;
+    margin-bottom: 0%;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 10;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown-content label input {
+    margin-right: 5px;
+  }
+
+
+.search-container {
+    width: 100%; /* Take 45% of the width */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin-top: 1%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-container h2 {
+    font-size: 1.7rem;
+    text-align: center;
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    padding: 10px;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin: 0 auto 20px;
+    width: 55%;
+    max-width: 425px;
+}
+
+.results-container {
+    width: 45%; /* Take 45% of the width */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.results-container h2 {
+    font-size: 1.7rem;
+    text-align: center;
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    padding: 10px;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin: 0 auto 20px;
+    width: 55%;
+    max-width: 425px;
+}
+
+
+.guest-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #fff;
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    padding: 20px;
+    border-radius: 25px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3), -4px -4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.guest-header p {
+    font-size: 1.2rem;
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 10px auto 0;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Combined Section for Search and Results */
+.search-results-container {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.pagination-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    position: relative;
+}
+
+.pagination-controls label {
+    text-align: center;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.pagination-controls select:focus {
+    outline: none;
+}
+
+.pagination-controls select {
+    font-size: 1.1rem;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-left: 5px;
+    position: relative; 
+    z-index: 1;
+}
+
+.pagination-controls select option {
+    position: absolute; /* Position absolutely relative to the container */
+}
+
+.pagination-controls select::-ms-expand {
+    display: none; /* Hides the default dropdown arrow in some browsers */
+}
+
+.pagination-controls select:focus::after {
+    content: ""; /* Optional for adding a visual indicator */
+    position: absolute;
+    top: 100%; /* Ensure it starts exactly below the select */
+    left: 0;
+    width: 100%; /* Matches the select width */
+    background: white; /* Same color as the dropdown */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional for a cleaner look */
+    z-index: 9999; /* Keep it on top */
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    justify-content: flex-end;
+    text-align: center;
+}
+
+.pagination-controls button:hover {
+    background-color: #45a049;
+}
+
+.pagination-buttons button {
+    padding: 10px 30px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 0%;
+    width: 32.5%;
+    max-width: 150px;
+    justify-content: flex-end;
+}
+
+.search-fields input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    font-size: 1rem;
+}
+
+.search-fields button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+    text-align: center;
+}
+
+.search-fields button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Results List Styling */
+.results-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    color: black; /* Ensure all text inside is black */
+}
+
+.results-list li {
+    background: #f8f8f8;
+    color: black; /* Text color for each list item */
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.results-list li p {
+    margin: 0;
+    color: black; /* Explicitly set paragraph text to black */
+}
+
+
+.results-list li button {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.results-list li button:hover {
+    background-color: #0056b3;
+}
+
+/* Public Lists Section Styling */
+.public-lists-section {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust alignment and spacing for toggle field */
+.toggle-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between label and slider */
+    margin-bottom: 0px;
+    padding: 5px 0;
+    width: 100%; /* Ensure full-width alignment */
+}
+
+/* Style for text (field label) */
+.field-label {
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    color: #000;
+}
+
+/* Style for the toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px; /* Increase the slider width */
+    height: 25px; /* Increase the slider height */
+}
+
+  .toggle-countries-button:disabled {
+    background-color: #a5d6a7; /* Lighter green for disabled */
+    cursor: not-allowed;
+  }
+  
+/* Button with text centered and arrow on the right */
+.toggle-countries-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures space between text and arrow */
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%; /* Ensure button width accommodates both text and arrow */
+    text-align: center;
+    position: relative; /* Ensure proper positioning */
+}
+  
+  /* Ensure the text is centered */
+  .button-text {
+    flex: 1; /* Takes up available space to center text */
+    text-align: center; /* Centers text within its space */
+  }
+  
+  /* Arrow styles */
+  .toggle-countries-button .arrow {
+    margin-left: 10px; /* Space between text and arrow */
+    width: 8px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    transform: rotate(45deg); /* Default downward arrow */
+    transition: transform 0.2s ease-in-out; /* Smooth rotation */
+  }
+  
+
+  
+  .arrow-up {
+    transform: rotate(-135deg); /* Upward arrow */
+  }
+  
+  .arrow-down {
+    transform: rotate(45deg); /* Downward arrow */
+  }
+  
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 19px; /* Make the slider circle bigger */
+    width: 19px;
+    border-radius: 50%;
+    background-color: white;
+    top: 3px;
+    left: 3px;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4caf50; /* Green when checked */
+}
+
+input:checked + .slider:before {
+    transform: translateX(35px); /* Adjust for the bigger slider */
+}
+
+.public-lists {
+    list-style: none;
+    padding: 0;
+}
+
+.public-lists li {
+    background: #f8f8f8;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .checkbox-field input[type='checkbox'] {
+    margin-right: 10px;
+  }
+  
+  .checkbox-field span {
+    font-size: 1rem;
+    color: #000;
+  }
+  
+  .additional-functions-container h2 {
+    font-size: 1.7rem;
+    text-align: center;
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    padding: 5px;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Container for the list of countries */
+.countries-list-container {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for contrast */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  /* Columns layout for countries */
+  .countries-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Flexible columns */
+    gap: 15px; /* Space between items */
+    justify-items: center;
+  }
+  
+  /* Individual country items */
+  .country-item {
+    background-color: #4caf50; /* Matching green theme */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for a clean look */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+    cursor: pointer;
+  }
+  
+  /* Hover effect for countries */
+  .country-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+
+.function-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.function-buttons .input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.function-results {
+    margin-top: 0px;
+}
+
+.countries-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.countries-list ul li {
+    background: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+
+    .additional-functions-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .function-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .function-buttons .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .guest-header h1 {
+        font-size: 2.5rem;
+    }
+    .guest-header p {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+    .search-results-container, .public-lists-section {
+        padding: 15px;
+    }
+    .search-fields input, .search-fields button {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* New Destination Details Container */
+.destination-details-container {
+    margin-top: 0px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Title Styling */
+  .destination-title {
+    font-size: 2rem;
+    color: #2d99cc;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+  }
+  
+  /* Grid Layout for Details */
+  .destination-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  /* Columns */
+  .details-column {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    line-height: 1;
+  }
+  
+  .details-column h4 {
+    font-size: 1.5rem;
+    color: #4caf50;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #2d99cc;
+    padding-bottom: 5px;
+  }
+  
+  .details-column p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1;
+    margin: 10px 0;
+  }
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  
+  .details-column p strong {
+    font-weight: bold;
+    color: #2d99cc;
+  }
+  
+  /* Bottom Row Styling */
+  .details-row {
+    grid-column: span 2;
+    background: rgba(240, 250, 250, 0.9);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-row h4 {
+    font-size: 1.4rem;
+    color: #4caf50;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #2d99cc;
+    padding-bottom: 5px;
+  }
+  
+  .details-row p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .destination-details-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .details-row {
+      grid-column: span 1;
+    }
+  }
+  
+
+  .clickable-result {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Hover effect */
+.clickable-result:hover {
+    background-color: #dbe4ff; /* Light blue to match a professional theme */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transform: translateY(-2px); /* Makes the item "lift" */
+    color: #00296b; /* Deep blue for text */
+}
+
+/* Highlighting title and description */
+.clickable-result strong {
+    color: #003366; /* Darker blue for better emphasis */
+}
+
+.clickable-result:hover strong {
+    color: #001a40; 
+} 
+
+.ddg-search-link {
+    font-size: 0.9rem;
+    color: #0077cc; /* Professional blue */
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #0077cc;
+    border-radius: 4px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+  
+  .ddg-search-link:hover {
+    color: white;
+    background: #0077cc; /* Blue on hover */
+    border-color: #005fa3; /* Slightly darker border on hover */
+    transform: scale(1.05); /* Subtle scale effect */
+  }
+  
+  .ddg-search-link img {
+    width: 100px;
+    height: 20px;
+  }
+  .map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .right-side {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds spacing between the Results and Lists containers */
+}
+.left-side {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    gap: 10px; 
+    margin-top: 1%;
+  }
+
+  .results-container, .lists-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lists-container h2 {
+    font-size: 1.7rem;
+    text-align: center;
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    padding: 10px;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin: 0 auto 20px;
+    width: 55%;
+    max-width: 425px;
+}
+
+.lists-container {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.lists-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.list-rating {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.list-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+/* Star and Review Styling */
+.stars {
+    font-size: 22px;
+    color: #ffbf00;
+    display: flex;
+    gap: 3px;
+}
+
+.stars .empty {
+    color: #ddd;
+}
+
+.view-reviews-link {
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.view-reviews-link:hover {
+    background: none;
+    border: none;
+    color: #0056b3;
+    text-decoration: underline; 
+    font-weight: bold;
+}
+.popup-title {
+    font-size: 2rem;
+    text-align: center;
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    padding: 15px;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin: 0 auto 20px;
+    width: 60%; 
+    max-width: 500px; 
+}
+
+
+
+
+/* Destination Tag Styling */
+.destination-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.destination-item {
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+    color: #00796b;
+    padding: 8px 14px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 1px solid #80deea;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.destination-item:hover {
+    background: linear-gradient(135deg, #b2ebf2, #80deea);
+    transform: scale(1.05);
+}
+
+/* General Card Styling */
+.list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-number {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0a74da;
+}
+
+.list-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    flex: 1;
+    margin-left: 8px;
+}
+
+.list-description {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.list-info {
+    font-size: 14px;
+    color: #666;
+}
+.toggle-lists-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    width: 100%;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.toggle-lists-button:hover {
+    background: #005bb5;
+    transform: scale(1.02);
+}
+
+.toggle-lists-button .arrow {
+    margin-left: 10px;
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+.arrow-up {
+    transform: rotate(180deg);
+}
+
+/* Guest Container */
+.guest-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Section */
+.guest-header {
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(45, 153, 204, 1) 80%, rgba(45, 153, 204, 0) 100%);
+  color: white;
+  text-align: left;
+  display: flex;
+  align-items: center; /* Aligns items vertically */
+  justify-content: space-between; /* Spreads title and links across */
+  padding: 5px 15px; /* Compact padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 0;
+  z-index: 10;
+  height: 62.5px; /* Fixed header height */
+}
+
+/* Left Section (Title) */
+.guest-header .guest-title {
+  font-size: 1rem !important; /* Ensure small size */
+  margin: 0;
+  font-weight: bold;
+  padding: 0;
+  background: none;
+}
+
+.guest-header .guest-about {
+  font-size: 0.7rem !important; /* Force a small size */
+  font-style: italic;
+  text-align: center;
+  max-width: 700px;
+  margin-top: -5px;
+}
+
+/* Right Section (Links) */
+.guest-header-links {
+  display: flex;
+  gap: 10px; /* Space between links */
+  align-items: center;
+}
+
+.guest-header-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem; /* Smaller font size */
+  background: rgba(0, 0, 0, 0.2);
+  padding: 3px 8px; /* Compact padding */
+  border-radius: 3px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.guest-header-links .features {
+  margin: 0;
+  font-size: 0.8rem; /* Slightly smaller text */
+  opacity: 0.8; /* Slightly faded text for less prominence */
+}
+
+.guest-header-links a:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+/* Guest Page Styling */
+.guest-page {
+  background-image: url('/img/Star-Background.gif');
+  background-size: 2000px 1200px;
+  background-size: cover; /* Ensures the background scales to cover the entire container */
+  background-position: center center; /* Center the GIF horizontally and vertically */
+  background-repeat: no-repeat; /* Avoids tiling of the GIF */
+  background-attachment: fixed; /* Makes the background stationary during scroll */
+  margin: 0; /* Remove unnecessary margins */
+  padding: 20px;
+  min-height: 100vh; /* Ensures it covers the full viewport height */
+  display: flex;
+  flex-direction: row; /* Side-by-side layout */
+  justify-content: flex-start;
+  align-items: flex-start; /* Aligns items to the top-left */
+  gap: 20px;
+  color: white;
+  width: 100%;
+  overflow: hidden; /* Prevents accidental overflow */
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*margin-top: calc(var(--header-height, 10px));*/
+  margin-top: -12.5px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-direction: row; /* Change to row for side-by-side layout */
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  align-items: first baseline; /* Align items to the top */
+  padding: 20px;
+  color: white;
+  width: 100%;
+}
+
+
+/* Universal Reset */
+:root {
+  --header-height: 50px;
+}

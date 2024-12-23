@@ -1,0 +1,304 @@
+/* Dimmed background overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+/* Popup container */
+.popup-container {
+    background: white;
+    width: 90%; /* Increase width to make it larger */
+    max-width: 900px; /* Increase maximum width */
+    height: auto; /* Let the height adjust dynamically */
+    max-height: 90vh; /* Ensure it doesn't exceed the viewport height */
+    border-radius: 8px;
+    padding: 30px; /* Add padding for content */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Popup content */
+.popup-content {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 70vh; /* Make sure it doesn't overflow vertically */
+    font-size: 16px; /* Adjust font size for readability */
+    line-height: 1.5;
+}
+.popup-title {
+    font-size: 2rem; 
+    text-align: center;
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    padding: 15px; 
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin: 0 auto 20px;
+    width: 60%; 
+    max-width: 500px; 
+}
+
+/* Make close button clickable with larger padding */
+.popup-close-button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    cursor: pointer;
+}
+
+
+/* Add the review styles here */
+.reviews-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-item {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.review-item strong {
+    font-size: 1.2rem;
+    color: #4caf50;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.review-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.review-item .review-meta {
+    font-size: 0.9rem;
+    color: #888;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.no-reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #555;
+    font-size: 18px;
+    background: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.no-reviews-icon {
+    font-size: 30px;
+    color: #4ad0b1;
+    margin-bottom: 10px;
+}
+
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+}
+
+.reviewer-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Container for stars */
+.stars-container {
+    display: flex;
+    gap: 4px; /* Space between stars */
+    margin: 5px 0;
+}
+
+/* Exit Button Styling */
+.popup-exit-button {
+    display: block;
+    width: 80%;
+    margin: 20px auto 0;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.popup-exit-button:hover {
+    background: linear-gradient(145deg, #2d99cc, #4ad0b1);
+    transform: translateY(-2px);
+}
+
+.popup-exit-button:active {
+    transform: translateY(1px);
+}
+
+/* Base star styling */
+.star {
+    font-size: 1.2rem; /* Adjust size as needed */
+    color: #ccc; /* Default empty star color */
+    transition: color 0.3s ease;
+}
+
+/* Filled star styling */
+.star.filled {
+    color: #FFD700; /* Gold for filled stars */
+}
+
+
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .popup-container {
+    background: #ffffff;
+    width: 80%; /* Wider popup */
+    max-width: 1100px; /* Maximum width for larger screens */
+    height: auto;
+    max-height: 90vh; /* Ensure it fits within the viewport */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.popup-title {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    color: #4a90e2; /* Accent color */
+    margin-bottom: 10px;
+}
+
+.input-field,
+.textarea-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.create-list-button,
+.edit-list-button,
+.delete-list-button {
+    background-color: #28a745; /* Green for create */
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.delete-list-button {
+    background-color: #dc3545; /* Red for delete */
+}
+
+.create-list-button:hover,
+.edit-list-button:hover,
+.delete-list-button:hover {
+    opacity: 0.9;
+}
+
+/* Suggestions Dropdown */
+.destination-suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.suggestion-item:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.list-description,
+.destination-item {
+    color: #333; /* Ensure readability */
+    font-size: 1rem;
+}
